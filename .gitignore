@@ -7,13 +7,13 @@
  
 # =============== #
  
-Temp/
+Client/Temp/
  
-Obj/
+Client/Obj/
  
-UnityGenerated/
+Client/UnityGenerated/
  
-Library/
+Client/Library/
  
  
  
@@ -23,25 +23,25 @@ Library/
  
 # ===================================== #
  
-ExportedObj/
+Client/ExportedObj/
  
-*.svd
+Client/*.svd
  
-*.userprefs
+Client/*.userprefs
  
-*.csproj
+Client/*.csproj
  
-*.pidb
+Client/*.pidb
  
-*.suo
+Client/*.suo
  
-*.sln
+Client/*.sln
  
-*.user
+Client/*.user
  
-*.unityproj
+Client/*.unityproj
  
-*.booproj
+Client/*.booproj
  
  
  
@@ -51,24 +51,24 @@ ExportedObj/
  
 # ============ #
  
-.DS_Store
+Client/.DS_Store
  
-.DS_Store?
+Client/.DS_Store?
  
-._*
+Client/._*
  
-.Spotlight-V100
+Client/.Spotlight-V100
  
-.Trashes
+Client/.Trashes
  
-Icon?
+Client/Icon?
  
-ehthumbs.db
+Client/ehthumbs.db
  
-Thumbs.db
+Client/Thumbs.db
  
-GraphicsSettings.asset
+Client/GraphicsSettings.asset
  
-ProjectSettings.asset
+Client/ProjectSettings.asset
  
-ProjectVersion.txt
+Client/ProjectVersion.txt
