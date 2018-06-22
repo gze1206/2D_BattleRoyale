@@ -2,15 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour {
+enum BulletType { NONE, YELLOW, RED, GREEN, BLUE, MAX };
+public class Bullet : Item
+{
+    private BulletType type;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

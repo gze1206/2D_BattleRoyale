@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Item : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    int count = 0;
+
+    public virtual void Use()
+    {
+        count -= 1;
+    }
+
+
 }
