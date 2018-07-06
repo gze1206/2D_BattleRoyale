@@ -9,6 +9,8 @@ public class Item : MonoBehaviour {
     private Text _text = null;
     [SerializeField]
     protected string _name;
+
+    [SerializeField]
     protected int _count = 0;
     protected int _maxCount = 1;
 
