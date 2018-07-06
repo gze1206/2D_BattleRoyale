@@ -14,7 +14,11 @@ public class Item : MonoBehaviour {
     protected int _count = 0;
     protected int _maxCount = 1;
 
-    private Collider2D target = null;
+
+    public void SetMax(int maxCount)
+    {
+        _maxCount = maxCount;
+    }
 
     public virtual void Use(int count = 1)
     {
@@ -28,11 +32,6 @@ public class Item : MonoBehaviour {
         UiUpdate();
     }
 
-    public void SetMax(int maxCount)
-    {
-        _maxCount = maxCount;
-    }
-
     public virtual void OnPickUp(Inventory target)
     {
         gameObject.SetActive(false);
@@ -40,25 +39,23 @@ public class Item : MonoBehaviour {
 
     public virtual string GetData()
     {
-        return _name;
+        if (_count <= 1)
+            return _name;
+        return _name + '(' + _count.ToString() + ')';
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && target == null)
-        {
-            target = collision;
+        if (collision.tag == "Player")
             collision.GetComponent<ItemPicker>().OnEnterItem(this);
-        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (target == collision)
-        {
-            collision.GetComponent<ItemPicker>().OnExitItem();
-            target = null;
-        }
+        collision.GetComponent<ItemPicker>().OnExitItem(this);
     }
 
     private void UiUpdate()

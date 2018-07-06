@@ -11,7 +11,9 @@ public class Inventory : MonoBehaviour
 
     public Weapon []weapon = new Weapon[2];
     public Bullet[] bullet = new Bullet[(int)BulletType.MAX];
+
     public Bombs bomb;
+    public Bombs smoke;
 
     public Armor helmet;
     public Armor vest;
@@ -37,6 +39,7 @@ public class Inventory : MonoBehaviour
         bullet[(int)BulletType.RED].SetMax(int.Parse(token[4]));
 
         //bomb.SetMax(int.Parse(token[6]));
+        //smoke.SetMax(int.Parse(token[6]));
 
         bandage.SetMax(int.Parse(token[7]));
         firstAidKit.SetMax(int.Parse(token[8]));

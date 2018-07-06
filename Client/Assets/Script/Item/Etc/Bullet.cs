@@ -13,8 +13,4 @@ public class Bullet : Item
         target.bullet[(int)_type].AddCount(_count);
     }
 
-    public override string GetData()
-    {
-        return _name + "(" + _count.ToString() + ")";
-    }
 }

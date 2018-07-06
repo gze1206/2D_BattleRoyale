@@ -9,8 +9,9 @@ public class ItemPicker : MonoBehaviour
     public Text _infoText;
     public GameObject _infoObject;
 
+    [SerializeField]
     private Item _target = null;
-    private IEnumerator _inputUpdate;
+    private Coroutine coroutine = null;
 
     private void Update()
     {
@@ -30,19 +31,18 @@ public class ItemPicker : MonoBehaviour
     //아이템과 충돌시 정보창 활성화
     public void OnEnterItem(Item target)
     {
-        if (_target != null)
-            return;
-
         ShowInfo(true, target);
-        _inputUpdate = InputUpdate();
-        StartCoroutine(_inputUpdate);
+        if (coroutine == null)
+            coroutine = StartCoroutine("InputUpdate");
     }
 
     //아이템 충돌 범위를 벗어났을떄 정보창 비활성화
-    public void OnExitItem()
+    public void OnExitItem(Item target)
     {
-        ShowInfo(false, null);
-        StopCoroutine(_inputUpdate);
+        if (_target != target)
+            return;
+
+        StopCoroutine(coroutine);
     }
 
     //아이템 정보 화면에 출력
@@ -58,7 +58,7 @@ public class ItemPicker : MonoBehaviour
     private void GetItem()
     {
         _target.OnPickUp(inventory);
-        OnExitItem();
+        ShowInfo(false, null);
     }
 
     //F눌렀는지 확인
@@ -66,8 +66,12 @@ public class ItemPicker : MonoBehaviour
     {
         while (true)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyUp(KeyCode.F))
+            {
                 GetItem();
+                coroutine = null;
+                yield break;
+            }
             yield return null;
         }
     }
