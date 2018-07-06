@@ -15,7 +15,7 @@ public class Heal : Item {
 
     private IEnumerator waitToUse;
 
-    public override void Use()
+    public override void Use(int count)
     {
         //TODO: 슬로우 적용
         waitToUse = WaitToUse();

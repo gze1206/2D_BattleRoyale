@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Backpack : Item {
+public class Backpack : Equipment {
+
 
 	// Use this for initialization
 	void Start () {
