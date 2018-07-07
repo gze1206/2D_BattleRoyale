@@ -72,3 +72,8 @@ Client/GraphicsSettings.asset
 Client/ProjectSettings.asset
  
 Client/ProjectVersion.txt
+
+#   _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+#  _/ ignore nodejs files - by gze1206 _/
+# _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+Server/node_modules/
