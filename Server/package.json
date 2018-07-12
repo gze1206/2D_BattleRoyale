@@ -13,12 +13,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gze1206/DigitechSeniorProject.git"
+    "url": "git+https://github.com/gze1206/2D_BattleRoyale.git"
   },
-  "author": "",
+  "author": "gze1206",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/gze1206/DigitechSeniorProject/issues"
+    "url": "https://github.com/gze1206/2D_BattleRoyale/issues"
   },
-  "homepage": "https://github.com/gze1206/DigitechSeniorProject#readme"
+  "homepage": "https://github.com/gze1206/2D_BattleRoyale#readme"
 }
