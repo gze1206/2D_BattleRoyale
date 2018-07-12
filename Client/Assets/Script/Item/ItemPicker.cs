@@ -16,16 +16,16 @@ public class ItemPicker : MonoBehaviour
     private void Update()
     {
         if (Input.GetKey(KeyCode.LeftArrow))
-            transform.Translate(new Vector3(-1, 0, 0));
+            transform.Translate(new Vector3(-0.3f, 0, 0));
 
         if (Input.GetKey(KeyCode.RightArrow))
-            transform.Translate(new Vector3(1, 0, 0));
+            transform.Translate(new Vector3(0.3f, 0, 0));
 
         if (Input.GetKey(KeyCode.DownArrow))
-            transform.Translate(new Vector3(0, -1, 0));
+            transform.Translate(new Vector3(0, -0.3f, 0));
 
         if (Input.GetKey(KeyCode.UpArrow))
-            transform.Translate(new Vector3(0, 1, 0));
+            transform.Translate(new Vector3(0, 0.3f, 0));
     }
 
     //아이템과 충돌시 정보창 활성화
@@ -42,7 +42,9 @@ public class ItemPicker : MonoBehaviour
         if (_target != target)
             return;
 
+        ShowInfo(false, null);
         StopCoroutine(coroutine);
+        coroutine = null;
     }
 
     //아이템 정보 화면에 출력
@@ -51,6 +53,7 @@ public class ItemPicker : MonoBehaviour
         if (itemData)
             _infoText.text = itemData.GetData();
         _target = itemData;
+        _infoObject.transform.position = transform.position;
         _infoObject.SetActive(isShow);
     }
 

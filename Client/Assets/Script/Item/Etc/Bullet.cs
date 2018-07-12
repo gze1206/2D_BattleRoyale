@@ -5,6 +5,7 @@ using UnityEngine;
 public enum BulletType { YELLOW, RED, GREEN, BLUE, MAX };
 public class Bullet : Item
 {
+    [SerializeField]
     private BulletType _type;
 
     public override void OnPickUp(Inventory target)

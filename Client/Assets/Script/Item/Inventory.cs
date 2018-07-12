@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
+    public List<Equipment> equipUiList;
+
     public Backpack backpack;
     public List<Scope> scopeList;
 
@@ -45,6 +48,32 @@ public class Inventory : MonoBehaviour
         firstAidKit.SetMax(int.Parse(token[8]));
         soda.SetMax(int.Parse(token[9]));
         pill.SetMax(int.Parse(token[10]));
+
+        if (level != 0)
+        {
+            backpack.gameObject.SetActive(true);
+        }
     }
 
+    public void ShowEquipUi(Equipment equip)
+    {
+        int index;
+        for (index = 0; index < equipUiList.Count; index++)
+        {
+            if (equipUiList[index].gameObject.activeSelf == false 
+             || equipUiList[index]._part == equip._part)
+            {
+                SetEquipUi(index, equip);
+                return;
+            }
+        }
+    }
+
+    private void SetEquipUi(int index, Equipment info)
+    {
+        Transform targetUi = equipUiList[index].transform;
+
+        targetUi.gameObject.SetActive(true);
+        targetUi.GetChild(0).GetComponent<Text>().text = info.GetData();
+    }
 }

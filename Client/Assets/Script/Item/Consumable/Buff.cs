@@ -17,4 +17,13 @@ public class Buff : Heal {
         base.EndHeal();
         //TODO: 이속증가 해제
     }
+
+    public override void OnPickUp(Inventory target)
+    {
+        base.OnPickUp(target);
+        if (_name == "Soda")
+            target.soda.AddCount(_count);
+        else if (_name == "Pill")
+            target.pill.AddCount(_count);
+    }
 }

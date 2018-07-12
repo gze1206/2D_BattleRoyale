@@ -8,6 +8,8 @@ public class Item : MonoBehaviour {
     [SerializeField]
     private Text _text = null;
     [SerializeField]
+    private Button _button = null;
+    [SerializeField]
     protected string _name;
 
     [SerializeField]
@@ -45,8 +47,6 @@ public class Item : MonoBehaviour {
     }
 
 
-
-
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -60,7 +60,9 @@ public class Item : MonoBehaviour {
 
     private void UiUpdate()
     {
-        if(_text)
+        if (_button)
+            _button.enabled = _count > 0;
+        if (_text)
             _text.text = _count.ToString();
     }
 }
