@@ -2,17 +2,28 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-
-/*app.get("/", function(req, res) {
-    res.sendFile(__dirname + "/public/client.html");
-});*/
+var cookieParser = require('cookie-parser');
 
 var ServerSettings = {
     serverPort: process.env.SERVER_PORT || 5522
 };
 
 //#region Server set up
-app.use(express.static('public'));
+app.use('/game', express.static('public'));
+app.use(cookieParser());
+
+// 주소에 방 ID가 없으면 쿠키가 없는 상태로 게임에 들어감
+app.get("/", function(req, res) {
+    res.clearCookie('roomID');
+    res.redirect('../game');
+});
+
+// 주소에 방 ID가 있으면 쿠키에 등록하고 게임에 들어감
+app.get("/:roomID", function(req, res) {
+    res.cookie('roomID', req.params.roomID);
+    res.redirect('../game');
+});
+
 http.listen(ServerSettings.serverPort, function() {
     console.log("Server On!!!");
     console.log("now listen on", ServerSettings.serverPort);
