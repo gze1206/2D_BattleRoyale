@@ -5,12 +5,9 @@ using UnityEngine.UI;
 
 public class Item : MonoBehaviour {
 
-    [SerializeField]
-    private Text _text = null;
-    [SerializeField]
-    private Button _button = null;
-    [SerializeField]
-    protected string _name;
+    public Text _text = null;
+    public Button _button = null;
+    public string _name;
 
     [SerializeField]
     protected int _count = 0;

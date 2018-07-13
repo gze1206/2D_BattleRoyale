@@ -3,35 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum ScopeType { x2, x4, x8, x15 }
+public enum ScopeType { x1, x2, x4, x8, x15 }
 public class Scope : Item
 {
     public ScopeType _type;
-    private int[] _scopeSize = new int[4] { 2, 4, 8, 15 };
+    private int[] _scopeSize = new int[5] { 2, 3, 4, 5, 6 };
 
     //획득시 범위 자동 변경
     public override void OnPickUp(Inventory target)
     {
         base.OnPickUp(target);
-        foreach (Scope scope in target.scopeList)
-        {
-            if (scope._type == _type)
-            {
-                scope.gameObject.SetActive(true);
-                scope.StartCoroutine(SetCameraSize());
-                SortScopeUi(target);
-                return;
-            }
-        }
+        ScopeUi.scopeUi.OnGetScope(_type);
     }
 
-    //UI순서 변경
-    private void SortScopeUi(Inventory target)
+    public void OnClick()
     {
-        foreach (Scope scope in target.scopeList)
+        ScopeUi.scopeUi.SelectScope(_type);
+    }
+
+    //선택시 호출
+    public void SelectScope(bool select)
+    {
+        if (select == false)
+            StartCoroutine(SetUiSize(1));
+        else
         {
-            if (scope.gameObject.activeSelf)
-                scope.StartCoroutine(scope.SetUiSize(scope._type == _type ? 2 : 1));
+            StartCoroutine(SetCameraSize());
+            StartCoroutine(SetUiSize(2));
         }
     }
 
