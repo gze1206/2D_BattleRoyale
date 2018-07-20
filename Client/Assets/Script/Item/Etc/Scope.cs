@@ -54,6 +54,7 @@ public class Scope : Item
         float elapsedTime = 0;
         float startSize = transform.localScale.x;
 
+        GetComponent<Button>().enabled = false;
         while (elapsedTime <= 1)
         {
             elapsedTime += Time.deltaTime * 0.75f;
@@ -61,5 +62,6 @@ public class Scope : Item
             transform.localScale = new Vector3(value, value, 1);
             yield return null;
         }
+        GetComponent<Button>().enabled = true;
     }
 }
